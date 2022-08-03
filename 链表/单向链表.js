@@ -72,6 +72,33 @@ function LinkList() {
     }
     return current.data
   }
+
+  // 7.removeAt方法
+  LinkList.prototype.removeAt = (position) => {
+    if (position < 0 || position >= this.length) return false;
+    if (position == 0) {
+      this.head = this.head.next;
+    } else {
+      var index = 0;
+      var current = this.head;
+      var previous = null;
+      while (index++ < position) {
+        previous = current;
+        current = current.next
+      }
+      previous.next = current.next;
+    }
+    this.length -= 1;
+    return current.data;
+  }
+
+  // 8.remove方法
+  LinkList.prototype.remove = (data) => {
+    var position = this.indexOf(data);
+    return this.removeAt(position);
+  }
+
+
 }
 
 let linkList = new LinkList()
