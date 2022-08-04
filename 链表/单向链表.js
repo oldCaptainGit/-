@@ -7,7 +7,7 @@ function LinkList() {
   this.length = 0;
 
   // 1.追加方法
-  LinkList.prototype.append = function (data) {
+  LinkList.prototype.append = (data) => {
     // 创建新的节点
     let newNode = new Node(data);
     // 判断是否为空
@@ -27,7 +27,7 @@ function LinkList() {
   }
 
   // 2.toString方法
-  LinkList.prototype.toString = function () {
+  LinkList.prototype.toString = () => {
     let current = this.head;
     var result = "";
     while (current) {
@@ -125,8 +125,6 @@ function LinkList() {
     var position = this.indexOf(data);
     return this.removeAt(position);
   }
-
-
 }
 
 // 测试代码
