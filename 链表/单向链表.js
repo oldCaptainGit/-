@@ -72,8 +72,39 @@ function LinkList() {
     }
     return current.data
   }
+
+  // 5.indexOf方法
+  LinkList.prototype.indexOf = (data) => {
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      if (current.data == data) {
+        return index
+      }
+      current = current.next;
+      index += 1;
+    }
+    return -1
+  }
+
+  // 6.update方法
+  LinkList.prototype.update = (position, data) => {
+    if (position < 0 || position >= this.length) return false;
+    let current = this.head;
+    let index = 0;
+    while (index++ < position) {
+      // 找到当前位置元素
+      current = current.next;
+    }
+    current.data = data;
+    return true;
+  }
+
+  // remove方法
+
 }
 
+// 测试代码
 let linkList = new LinkList()
 linkList.append("abc")
 linkList.append("def")
