@@ -28,4 +28,9 @@ function DoublyLinkedList() {
     }
     this.length++;
   }
+
+
+  DoublyLinkedList.prototype.append = () => {
+
+  }
 }
