@@ -109,5 +109,19 @@ function DoublyLinkedList() {
     return -1
   }
 
+  // 6.update方法
+  DoublyLinkedList.prototype.indexOf = (position, element) => {
+    if (position < 0 || position >= this.length) return false;
+
+    let current = this.head;
+    let index = 0;
+
+    while (index++ < position) {
+      current = current.next;
+    }
+    current.data = element;
+    return true;
+  }
+
 
 }
