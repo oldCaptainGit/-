@@ -29,32 +29,84 @@ function DoublyLinkedList() {
     this.length++;
   }
 
-  // 2.将链表转化为字符串
+  // 2.toString
   // 2.1 toString
   DoublyLinkedList.prototype.toString = () => {
-    return this.backwardString()
+    return this.backwardString();
   }
 
-  // 2.2 forwardString
+  // 2.2 forwardToString
   DoublyLinkedList.prototype.forwardString = () => {
-    let current = this.head;
-    let string = "";
+    let current = this.tail;
+    let resultString = "";
+
     while (current) {
-      string += current.data + " ";
-      current = current.next;
+      resultString += current.data + " ";
+      current = current.prev;
     }
-    return string;
+    return resultString;
   }
 
   // 2.3 backwardString
   DoublyLinkedList.prototype.backwardString = () => {
-    let current = this.tail;
-    let string = "";
+    let current = this.head;
+    let resultString = "";
+
     while (current) {
-      string += current.prev + "";
-      current = current.prev;
+      resultString += current.data + " ";
+      current = current.next;
     }
-    return string;
+    return resultString;
+  }
+
+  // 3.insert方法
+  DoublyLinkedList.prototype.insert = (position, newNode) => {
+    if (position < 0 || position > this.length) return;
+
+    if (position == 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else if (position == this.length) {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    } else {
+      var current = this.head;
+      var index = 0;
+      while (index++ < position) {
+        current = current.next;
+      }
+      newNode.next = current;
+      newNode.prev = current.prev;
+      current.prev.next = newNode;
+      current.prev = newNode;
+    }
+  }
+
+  // 4.get方法
+  DoublyLinkedList.prototype.get = (position) => {
+    if (position < 0 || position >= this.length) return null;
+
+    let current = this.head;
+    let index = 0;
+    while (index++ < position) {
+      current = current.next;
+    }
+    return current.data;
+  }
+
+  // 5.indexOf方法
+  DoublyLinkedList.prototype.indexOf = (data) => {
+    var current = this.head;
+    var index = 0;
+    while (current) {
+      if (current.data == data) {
+        return index
+      }
+      current = current.next;
+      index += 1;
+    }
+    return -1
   }
 
 
