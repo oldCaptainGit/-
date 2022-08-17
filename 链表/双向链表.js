@@ -29,8 +29,33 @@ function DoublyLinkedList() {
     this.length++;
   }
 
-
-  DoublyLinkedList.prototype.append = () => {
-
+  // 2.将链表转化为字符串
+  // 2.1 toString
+  DoublyLinkedList.prototype.toString = () => {
+    return this.backwardString()
   }
+
+  // 2.2 forwardString
+  DoublyLinkedList.prototype.forwardString = () => {
+    let current = this.head;
+    let string = "";
+    while (current) {
+      string += current.data + " ";
+      current = current.next;
+    }
+    return string;
+  }
+
+  // 2.3 backwardString
+  DoublyLinkedList.prototype.backwardString = () => {
+    let current = this.tail;
+    let string = "";
+    while (current) {
+      string += current.prev + "";
+      current = current.prev;
+    }
+    return string;
+  }
+
+
 }
